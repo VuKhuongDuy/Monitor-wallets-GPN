@@ -1,7 +1,6 @@
-import { ethers, JsonRpcProvider } from "ethers";
+import { Contract, ethers, JsonRpcProvider } from "ethers";
 import fs from "fs";
 import ERC20_ABI from "../abis/ERC20.json";
-import { validateEnvAndNetwork } from "../src/utils/utils";
 
 interface Wallet {
   name: string;
@@ -85,43 +84,21 @@ export const metricsEthBalance = async () => {
     .join("\n");
 };
 
-export const metricsTokenBalance = async (contract, token) => {
+export const metricsTokenBalance = async (contract: Contract, token: Token) => {
   const prom = config.wallets.map((wallet) =>
     contract.balanceOf(wallet.address)
   );
   const balances = await Promise.all(prom);
+  const tokenDecimal = await contract.decimals()
   return balances
     .map((balance, index) => {
       let balanceInEther = ethers.formatEther(balance);
-      if (token.decimal != 18) {
+      if (Number(tokenDecimal) != 18) {
         balanceInEther = (
-          balance / BigInt(Math.pow(10, token.decimal))
+          balance / BigInt(Math.pow(10, Number(tokenDecimal)))
         ).toString();
       }
       return `wallet_balance{network="${config.network}", wallet="${config.wallets[index].name}", address="${config.wallets[index].address}", token="${token.name}", tag="${config.wallets[index].name}-${token.name}"} ${balanceInEther}`;
     })
     .join("\n");
-};
-
-export const metricsContract = async (contract, address) => {
-  const [owner, ethBalance, usdcBalance, symbioticBalance] = await Promise.all([
-    contract.owner(),
-    provider.getBalance(address),
-    usdcContract.balanceOf(address),
-    symbioticContract.balanceOf(address),
-  ]);
-
-  const ethBalanceInEther = ethers.formatEther(ethBalance);
-  const usdcBalanceInEther = ethers.formatEther(usdcBalance);
-  const symbioticBalanceInEther = ethers.formatEther(symbioticBalance);
-
-  // Expose contract balance as a Prometheus metric
-  const metrics = [
-    `contract_balance{contract="${address}", token="ETH"} ${ethBalanceInEther}`,
-    `contract_balance{contract="${address}", token="USDC"} ${usdcBalanceInEther}`,
-    `contract_balance{contract="${address}", token="Symbiotic"} ${symbioticBalanceInEther}`,
-    `contract_owner{contract="${address}", owner="${owner}"} 1`,
-  ].join("\n");
-
-  return metrics;
 };

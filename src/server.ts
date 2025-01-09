@@ -9,9 +9,9 @@ app.get('/metrics', async (req, res) => {
     try {
         let metrics = "";
 
-        metrics += (await getMetrictEvm("./config/evm-config.json"))
+        metrics += (await getMetrictEvm("./config/evm.config.json"))
         metrics += "\n\n"
-        metrics += (await getMetrictSvm('./config/svm-config.json'))
+        metrics += (await getMetrictSvm('./config/svm.config.json'))
         metrics += "\n\n"
 
         res.set('Content-Type', 'text/plain');
