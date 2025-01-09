@@ -10,15 +10,15 @@ services:
       - '3000:3000'
     # adding the mount volume point which we create earlier
     volumes:
-      - '$PWD/monitor/grafana-data:/var/lib/grafana'
+      - '$PWD/grafana-data:/var/lib/grafana'
     networks:
       - my-network
   
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - ./monitor/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./monitor/prometheus-data:/prometheus
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus-data:/prometheus
     ports:
       - 9090:9090
     networks:
@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile # Your Dockerfile to run the Node.js app
     container_name: node-exporter
     volumes:
-      - ./monitor/:/usr/src/app/monitor
+      - ./:/usr/src/app
     ports:
       - "8080:8080" # Expose the Node.js app metrics endpoint
     environment:

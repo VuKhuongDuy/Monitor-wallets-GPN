@@ -13,4 +13,4 @@ COPY . .
 
 # Expose port and run the app
 EXPOSE 8080
-CMD ["npx", "ts-node", "monitor/wallet-balance-exporter.ts"]
+CMD ["npx", "ts-node", "src/server.ts"]
