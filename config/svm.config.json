@@ -1,0 +1,41 @@
+{
+  "wallets": [
+    {
+      "name": "Wallet-1",
+      "address": "Do1NEeQGT3YwFMPMGRMK9BEtifBhvDHz6VtSDVzJonbH"
+    },
+    {
+      "name": "Wallet-2",
+      "address": "3vn72dySHng8uovhXpJ78bE7ePGKtrnffrYjpYvoLYwe"
+    },
+    {
+      "name": "Wallet-3",
+      "address": "58kUgvCTGnwwkK5twpLAqqp6ufux9LQoz3N8UrYcqbxX"
+    },
+    {
+      "name": "Wallet-4",
+      "address": "Do1NEeQGT3YwFMPMGRMK9BEtifBhvDHz6VtSDVzJonbH"
+    },
+    {
+      "name": "Wallet-5",
+      "address": "3vn72dySHng8uovhXpJ78bE7ePGKtrnffrYjpYvoLYwe"
+    },
+    {
+      "name": "Wallet-6",
+      "address": "58kUgvCTGnwwkK5twpLAqqp6ufux9LQoz3N8UrYcqbxX"
+    },
+    {
+      "name": "Wallet-7",
+      "address": "Do1NEeQGT3YwFMPMGRMK9BEtifBhvDHz6VtSDVzJonbH"
+    },
+    {
+      "name": "Wallet-8",
+      "address": "3vn72dySHng8uovhXpJ78bE7ePGKtrnffrYjpYvoLYwe"
+    }
+  ],
+  "usdc": {
+    "name": "USDC",
+    "address": "7YHkdM3isuj7uE8BTQR3UAmTVvKMr6Vb1mraRe8dwtJt"
+  },
+  "network": "sol-devnet"
+}

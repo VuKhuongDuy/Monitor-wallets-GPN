@@ -1,0 +1,14 @@
+{
+    "wallets": [
+        { "name": "Wallet-1", "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef" },
+        { "name": "Wallet-2", "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef" },
+        { "name": "Wallet-3", "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef" },
+        { "name": "Wallet-4", "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef" },
+        { "name": "Wallet-5", "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef" }
+    ],
+    "usdc": {
+        "name": "USDC",
+        "address": "0xd1c7678c4a5C7D4264d016Dc423BAE43D356beef"
+    },
+    "network": "sepolia"
+}
