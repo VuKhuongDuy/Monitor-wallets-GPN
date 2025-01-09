@@ -1,0 +1,43 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command
+    user: '0'
+    ports:
+      - '3000:3000'
+    # adding the mount volume point which we create earlier
+    volumes:
+      - '$PWD/monitor/grafana-data:/var/lib/grafana'
+    networks:
+      - my-network
+  
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./monitor/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./monitor/prometheus-data:/prometheus
+    ports:
+      - 9090:9090
+    networks:
+      - my-network
+
+  node-exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile # Your Dockerfile to run the Node.js app
+    container_name: node-exporter
+    volumes:
+      - ./monitor/:/usr/src/app/monitor
+    ports:
+      - "8080:8080" # Expose the Node.js app metrics endpoint
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+    networks:
+      - my-network
+
+networks:
+  my-network:

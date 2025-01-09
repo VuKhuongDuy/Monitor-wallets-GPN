@@ -1,0 +1,14 @@
+{
+    "wallets": [
+        { "name": "Wallet-1", "address": "0x48E0E437e2C047cB450A673CDC971493D2329e44" },
+        { "name": "Wallet-2", "address": "0x48E0E437e2C047cB450A673CDC971493D2329e44" },
+        { "name": "Wallet-3", "address": "0x65c6cF590BE2781807f49d6576Edf375f9214f1E" },
+        { "name": "Wallet-4", "address": "0x60bd7D2e82008f93cC4eA81Eb28167725b80b411" },
+        { "name": "Wallet-5", "address": "0x7F7dA72446786dfe04888aa9cDF914531FC40e5F" }
+    ],
+    "usdc": {
+        "name": "USDC",
+        "address": "0xcc4Ea4Ac242eb8ecd594592F0Fa71b16bbB414fA"
+    },
+    "network": "sol-devnet"
+}
